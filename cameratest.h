@@ -5,9 +5,11 @@
 
 #include <QCamera>
 #include <QCameraInfo>
+#include <QCameraImageCapture>
 #include <QPixmap>
 #include <QAbstractVideoSurface>
 #include <QVideoFrame>
+#include <QLabel>
 
 #include "myvideosurface.h"
 
@@ -32,10 +34,15 @@ private slots:
 
     void videoChangedslot(QVideoFrame curFrame);
 
+    void saveImage(int,QImage);
+
+    void on_saveButton_clicked();
 
 private:
     Ui::CameraTest *ui;
-    QCamera             *m_pCamera;
-    MyVideoSurface      *m_pVf;
+    QCamera                 *m_pCamera;
+    QCameraImageCapture     *m_pImageCapture;     //截图部件
+    MyVideoSurface          *m_pVf;
+    QLabel                  *m_label_camera_show;
 };
 #endif // CAMERATEST_H
